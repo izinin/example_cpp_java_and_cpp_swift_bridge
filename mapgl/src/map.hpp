@@ -3,6 +3,7 @@
 #include <memory>
 #include <optional>
 #include <string>
+#include "map.h"
 
 class StyleOptions
 {
@@ -25,23 +26,13 @@ private:
     std::optional<StyleOptions> options;
 };
 
-class MapInterface
-{
-public:
-    using MapRenderedCallback = std::function<void()>;
-    virtual void render(MapRenderedCallback &&) = 0;
-
-protected:
-    MapInterface() = default;
-};
-
 class StyledMap : public MapInterface
 {
 public:
     StyledMap() = default;
     void setStyle(std::unique_ptr<Style> &&);
     // throws std::runtime_error if no valid style is set.
-    void render(MapRenderedCallback &&) final;
+    void render(const std::string &, MapRenderedCallback &&) final;
 
 private:
     std::unique_ptr<Style> style;
