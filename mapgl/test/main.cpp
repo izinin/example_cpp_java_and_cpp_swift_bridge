@@ -1,4 +1,4 @@
-#include "../mapgl/src/map.hpp"
+#include "../src/map.hpp"
 
 int main()
 {
