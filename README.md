@@ -65,10 +65,9 @@ source ~/.bashrc
 ```
 ### run example
 ```
-cd binding/swift
+cd binding/mapboxswift
 swift run
 ```
 
-### References
-* It looks like [dynamic loading library API](https://forums.swift.org/t/swift-dynamic-loading-api/39495) is not implemented in swift 
-* it is possible to use swift [dynamic libraries made with package manager](https://theswiftdev.com/building-and-loading-dynamic-libraries-at-runtime-in-swift/)
+# General comments
+**TODO**: map C++ sources are duplicated for java and swift because swift package manager requires certain directory structure. I could re-layout the project to make 'mapgl' folder shared between two build systems : CMake and Swift SPM not sure how good is to put symbolic links to 'mapgl' folder under source control. Symbolic link shall be created dynamically in a build pipeline i think.
